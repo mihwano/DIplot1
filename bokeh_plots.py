@@ -110,9 +110,8 @@ def first_plot():
 
 
 def second_plot():
-    url = 'https://raw.githubusercontent.com/mihwano/DIplot1/master/final.csv'
-    df = pd.read_csv(url)
-
+    url = 'https://raw.githubusercontent.com/mihwano/DIplot1/master/final2.csv'
+    df = pd.read_csv(url, encoding='utf8')
     # df = pd.read_csv('final.csv', encoding='latin')
 
     df = df.groupby('location', as_index=False)[['population', 'count', 'sentiment', 'main_party','partisan_split']].first()
