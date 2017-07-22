@@ -10,6 +10,9 @@ from collections import OrderedDict
 from collections import Counter
 from bokeh.charts import Bar
 from bokeh.palettes import YlOrRd4
+import pdb
+import io
+import requests
 
 
 STATE_DICT = {'AK': 'Alaska','AL': 'Alabama','AR': 'Arkansas','AS': 'American Samoa','AZ': 'Arizona','CA': 'California',
@@ -107,7 +110,11 @@ def first_plot():
 
 
 def second_plot():
-    df = pd.read_pickle('final.pck')
+    url = 'https://raw.githubusercontent.com/mihwano/DIplot1/master/final.csv'
+    df = pd.read_csv(url)
+
+    # df = pd.read_csv('final.csv', encoding='latin')
+
     df = df.groupby('location', as_index=False)[['population', 'count', 'sentiment', 'main_party','partisan_split']].first()
     p = display_graph(df)
 #    show(p)
